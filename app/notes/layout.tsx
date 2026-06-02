@@ -1,9 +1,14 @@
+import SidebarNotes from './filter/@sidebar/page'
+
 interface Props{
     children:React.ReactNode
 }
 const NotesLeyaout = ({children}: Props) => {
     return (
-        <div>{children}</div>
+        <div>
+            <SidebarNotes/>
+            {children}
+        </div>
     )
 }
 

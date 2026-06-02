@@ -1,3 +1,4 @@
+import Link from "next/link";
 import css from './SidebarNotes.module.css'
 
 const SidebarNotes = () => {
@@ -10,9 +11,9 @@ const SidebarNotes = () => {
         </a>
       </li>
       <li className={css.menuItem}>
-        <a href={`url до сторінки за відповідним тегом`} className={css.menuLink}>
+        <Link href={`notes`} className={css.menuLink}>
           Назва тегу
-        </a>
+        </Link>
       </li>
     </ul>
     )
