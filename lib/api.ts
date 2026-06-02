@@ -79,3 +79,12 @@ export const getNoteItem = async (id:string) => {
   })
  return data
 }
+
+export const getTag = async (tag:string) => {
+ const {data} = await axios.get<Note>(`${BASE_URL}/?tag=${tag}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
+  })
+ return data
+}
