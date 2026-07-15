@@ -2,6 +2,7 @@ import Link from "next/link";
 import css from './SidebarNotes.module.css'
 
 const SidebarNotes = () => {
+  const tags = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
     return (
     <ul className={css.menuList}>
     {/* список тегів */}
@@ -10,11 +11,14 @@ const SidebarNotes = () => {
           All notes
         </a>
       </li>
+      {tags.map(tag => (
       <li className={css.menuItem}>
         <Link href={`notes`} className={css.menuLink}>
-          Назва тегу
+          {tag}
         </Link>
       </li>
+
+      ))}
     </ul>
     )
 }
