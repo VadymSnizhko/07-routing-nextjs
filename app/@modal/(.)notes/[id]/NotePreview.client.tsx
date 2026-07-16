@@ -51,6 +51,29 @@ const NotePreview = () => {
 
     const back = () => router.back();
 
+    if (isLoading) {
+        return (
+            <Modal isOpen={true} onClose={back}>
+                <p>Loading...</p>
+            </Modal>
+        );
+    }
+
+    if (error) {
+        return (
+            <Modal isOpen={true} onClose={back}>
+                <p>Failed to load note.</p>
+            </Modal>
+        );
+    }
+
+    if (!note) {
+        return (
+            <Modal isOpen={true} onClose={back}>
+                <p>Note not found.</p>
+            </Modal>
+        );
+    }
 
     return (
         <Modal isOpen={true} onClose={back}>
