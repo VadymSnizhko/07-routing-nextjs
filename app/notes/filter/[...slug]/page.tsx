@@ -16,8 +16,6 @@ const NotesPage = async ({params}: Props) => {
   const tag = slug[0] === 'all' ? undefined : slug[0];
   const queryClient = new QueryClient();
 
-  console.log(slug);
-    console.log(tag);
   //console.log(tag)
 
   await queryClient.prefetchQuery({
