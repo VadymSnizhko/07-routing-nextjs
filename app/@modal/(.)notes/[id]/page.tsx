@@ -1,7 +1,7 @@
 import css from "./NoteDetails.module.css"
 import { getNoteItem } from "@/lib/api"
 import { QueryClient, HydrationBoundary, dehydrate, } from "@tanstack/react-query"
-import NotePreview from "../../../NotePreview/NotePreview.client"
+import NotePreview from "./NotePreview.client"
 
 
 interface Props{
