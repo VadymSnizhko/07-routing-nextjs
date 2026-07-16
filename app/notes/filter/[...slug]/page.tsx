@@ -16,21 +16,23 @@ const NotesPage = async ({params}: Props) => {
   const tag = slug[0] === 'all' ? undefined : slug[0];
   const queryClient = new QueryClient();
 
-  console.log(tag)
+  console.log(slug);
+    console.log(tag);
+  //console.log(tag)
 
   await queryClient.prefetchQuery({
-    queryKey: ["notes", 1, ""],
+    queryKey: ["notes", 1, "", tag],
     queryFn: () =>
       fetchNotes({
         page: 1,
         search: "",
-        tag: tag
+        tag,
       }),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient />
+      <NotesClient tag={tag}/>
     </HydrationBoundary>
   );
 };

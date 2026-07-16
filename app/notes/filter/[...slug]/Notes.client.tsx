@@ -13,14 +13,9 @@ import Modal from "@/components/Modal/Modal"
 import NoteForm from "@/components/NoteForm/NoteForm"
 import NoteList from "@/components/NoteList/NoteList"
 
-const NotesClient = () => {
-  const [page, setPage] = useState<number>(1)
-
-  const [search, setSearch] = useState<string>("")
-
-  const [isModalOpen, setIsModalOpen] =
-    useState<boolean>(false);
-/*** */
+type Props = {
+  tag?: string;
+};
 
 const useDebounce = (
   value: string,
@@ -39,7 +34,18 @@ const useDebounce = (
 
   return debouncedValue;
 };
+
+const NotesClient = ({tag}: Props) => {
+  const [page, setPage] = useState<number>(1)
+
+  const [search, setSearch] = useState<string>("")
+
+  const [isModalOpen, setIsModalOpen] =
+    useState<boolean>(false);
 /*** */
+
+/*** */
+
 
   const debouncedSearch =
     useDebounce(search, 500)
@@ -53,12 +59,14 @@ const useDebounce = (
       "notes",
       page,
       debouncedSearch,
+      tag,
     ],
 
     queryFn: () =>
       fetchNotes({
         page,
         search: debouncedSearch,
+        tag,
       }),
 
     placeholderData: (prev) => prev,
