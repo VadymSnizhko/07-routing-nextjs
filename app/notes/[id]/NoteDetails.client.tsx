@@ -2,7 +2,7 @@
 
 import css from "./NoteDetails.module.css"
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from 'next/navigation';
+import { useParams,useRouter } from 'next/navigation';
 import { getNoteItem } from "@/lib/api"
 
 const NoteDetailsClient = () => {
@@ -21,10 +21,14 @@ const NoteDetailsClient = () => {
   const rawDate = note.updatedAt || note.createdAt;
   //const label = note.updatedAt ? "Updated at" : "Created at";
 
+    const router = useRouter();
+
+    const back = () => router.back();
   const formattedDate = `${new Date(rawDate).toLocaleString()}`
     return (
       <div className={css.container}>
 	    <div className={css.item}>
+                        <button className={css.backBtn} onClick={back}>Back</button>
 	        <div className={css.header}>
 	            <h2>{note.title}</h2>
 	        </div>

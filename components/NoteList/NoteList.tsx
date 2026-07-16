@@ -41,6 +41,7 @@ const NoteList = ({ notes }: NoteListProps) => {
             <span className={css.tag}>{note.tag}</span>
 
             {}
+            <Link href={`/notes/${note.id}`} className={css.link}>View details</Link>
             <button 
               className={css.button}
               disabled={mutation.isPending}

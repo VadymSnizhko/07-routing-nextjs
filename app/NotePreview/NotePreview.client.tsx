@@ -1,0 +1,44 @@
+"use client"
+
+import { useRouter, useParams } from 'next/navigation';
+import { useQuery } from "@tanstack/react-query";
+import { getNoteItem } from "@/lib/api"
+import css from "./NotePreview.module.css"
+import modaCss from '@/components/Modal/Modal.module.css'
+
+
+type Props = {
+    children: React.ReactNode;
+};
+
+const NotePreview = () => {
+    const { id } = useParams<{ id: string }>();
+
+    const { data: note, isLoading, error } = useQuery({
+        queryKey: ["note", id],
+        queryFn: () => getNoteItem(id),
+        refetchOnMount: false,
+    });
+
+
+    const router = useRouter();
+
+    const back = () => router.back();
+    return (
+        <div className={modaCss.backdrop}>
+            <div className={modaCss.modal}>
+                <div className={css.container}>
+                    <div className={css.item}>
+                        <button className={css.backBtn} onClick={back}>Back</button>
+                        <h2 className={css.header}>{note?.title}</h2>
+                        <p className={css.tag}>{note?.tag}</p>
+                        <p className={css.content}>{note?.content}</p>
+                        <p className={css.date}>{note?.createdAt}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>)
+}
+
+export default NotePreview
