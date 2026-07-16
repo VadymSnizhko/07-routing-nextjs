@@ -1,6 +1,6 @@
 import axios from 'axios';
 //import { useMutation } from '@tanstack/react-query';
-import {type Note, type CreateNote} from '../types/note'
+import {type Note, type CreateNote, NoteTag} from '../types/note'
 
 interface FetchNotesResponse {
   notes: Note[];
@@ -10,7 +10,7 @@ interface FetchNotesResponse {
 interface FetchNotesParams {
   page: number;
   search?: string;
-  tag?: string; 
+  tag?: NoteTag; 
 }
 
 const BASE_URL = 'https://notehub-public.goit.study/api/notes';
@@ -74,7 +74,7 @@ export const deleteNote = async (
 
 //axios.defaults.baseURL = 'https://notehub-public.goit.study/api/notes'
 
-export const getNoteItem = async (id:string) => {
+export const getNoteItem = async (id:string): Promise<Note> => {
  const {data} = await axios.get<Note>(`${BASE_URL}/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
@@ -82,7 +82,7 @@ export const getNoteItem = async (id:string) => {
   })
  return data
 }
-
+/*
 export const getTag = async (tag:string) => {
  const {data} = await axios.get<Note>(`${BASE_URL}/?tag=${tag}`, {
     headers: {
@@ -90,4 +90,4 @@ export const getTag = async (tag:string) => {
     },
   })
  return data
-}
+}*/
