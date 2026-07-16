@@ -1,6 +1,6 @@
 import css from './Home.module.css'
 
-const NoteFoundPage = () => {
+const NotFoundPage = () => {
     return (
         <div>
         <h1 className={css.title}>404 - Page not found</h1>
@@ -9,4 +9,4 @@ const NoteFoundPage = () => {
     )
 }
 
-export default NoteFoundPage
+export default NotFoundPage

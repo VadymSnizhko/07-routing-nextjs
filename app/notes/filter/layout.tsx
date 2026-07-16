@@ -5,7 +5,7 @@ interface Props {
     children: React.ReactNode;
     sidebar: React.ReactNode;
 }
-const NotesLeyaout = ({ children, sidebar }: Props) => {
+const NotesLayout = ({ children, sidebar }: Props) => {
     return (
         <div>
             <section className={css.container}>
@@ -16,4 +16,4 @@ const NotesLeyaout = ({ children, sidebar }: Props) => {
     )
 }
 
-export default NotesLeyaout
+export default NotesLayout
