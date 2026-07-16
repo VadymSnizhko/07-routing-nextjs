@@ -12,9 +12,10 @@ import Pagination from "@/components/Pagination/Pagination"
 import Modal from "@/components/Modal/Modal"
 import NoteForm from "@/components/NoteForm/NoteForm"
 import NoteList from "@/components/NoteList/NoteList"
+import { NoteTag } from "@/types/note"
 
 type Props = {
-  tag?: string;
+  tag?: NoteTag;
 };
 
 const useDebounce = (
